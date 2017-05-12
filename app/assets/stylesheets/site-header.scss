@@ -1,0 +1,20 @@
+.site-header {
+  width: 100%;
+  background-color: teal;
+}
+
+.site-header > h1 {
+  display: inline-block;
+  margin: 5px;
+}
+
+.header-login {
+  display: inline-block;
+  float: right;
+  position: relative;
+  height: 47px;
+}
+
+.header-form {
+  padding: 14px; 
+}

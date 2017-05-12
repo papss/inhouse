@@ -16,9 +16,9 @@
       <h1> inHouse </h1>
 
       <div class="header-login">
-        <%= form_with url: login_path do |form| %>
-          <%= form.text_field :email_address %>
-          <%= form.text_field :password %>
+        <%= form_with(url: login_path, class: 'header-form') do |form| %>
+          <%= form.text_field :email_address,   value: 'Email' %>
+          <%= form.text_field :password,        value: 'Password' %>
           <%= form.submit "Log In" %>
         <% end %>
       </div>
