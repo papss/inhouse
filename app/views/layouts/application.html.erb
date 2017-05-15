@@ -12,20 +12,19 @@
 
   <body>
 
-    <div class="site-header">
-      <h1> inHouse </h1>
+    <%= render 'layouts/header' %>
 
-      <div class="header-login">
-        <%= form_with(url: login_path, class: 'header-form') do |form| %>
-          <%= form.text_field :email_address,   value: 'Email' %>
-          <%= form.text_field :password,        value: 'Password' %>
-          <%= form.submit "Log In" %>
-        <% end %>
-      </div>
-
+    <div class="error-container">
+      <% flash.each do |message_type, message| %>
+        <div class="error error-<%= message_type %>">
+          <%= message %>
+        </div>
+      <% end %>
     </div>
 
     <%= yield %>
+
+    <%= debug(params) if Rails.env.development? %>
 
   </body>
 
