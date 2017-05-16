@@ -1,6 +1,6 @@
 <% provide(:title, "Log In") %>
 
-<%= form_with url: login_path do |form| %>
+<%= form_for(:session, url: login_path) do |form| %>
   <%= form.text_field :email_address %>
   <%= form.text_field :password %>
   <%= form.submit "Log In" %>
