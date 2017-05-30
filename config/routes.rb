@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :leagues
   root 'landing#index'
 
   get 'landing/index'
