@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :leagues
+
   attr_accessor :remember_token
 
   before_save { self.email_address = email_address.downcase }
