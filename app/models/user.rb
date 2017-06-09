@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 
-  has_many :leagues
 
   attr_accessor :remember_token
 

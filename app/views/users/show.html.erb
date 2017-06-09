@@ -7,15 +7,7 @@
 <h3>
   My Leagues
 </h3>
-<% if @user.leagues.any? %>
-  <ul>
-    <%= render @leagues %>
-  </ul>
-<% else %>
-  <p>
-    You don't seem to be a member of any leagues!
-  </p>
-<% end %> 
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
