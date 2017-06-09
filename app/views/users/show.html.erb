@@ -8,6 +8,19 @@
   My Leagues
 </h3>
 
+<% if @user.leagues.any? %>
+  <ul>
+    <%= render @leagues %>
+  </ul>
+<% else %>
+  <p>
+    You don't seem to be a member of any leagues.
+  </p>
+<% end %>
+
+<h4>
+  <%= link_to 'Start a new League', new_league_path %>
+</h4>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

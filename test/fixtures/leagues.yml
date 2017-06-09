@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  user: one
   created_at: <%= 10.minutes.ago %>
 
 two:
   name: MyString
-  user: two
   created_at: <%= 2.hours.ago %>
