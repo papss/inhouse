@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609181213) do
+ActiveRecord::Schema.define(version: 20170609182937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,10 @@ ActiveRecord::Schema.define(version: 20170609181213) do
     t.string "password_digest"
     t.string "remeber_digest"
     t.boolean "site_admin"
+    t.bigint "league_id"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["league_id"], name: "index_users_on_league_id"
   end
 
+  add_foreign_key "users", "leagues"
 end
