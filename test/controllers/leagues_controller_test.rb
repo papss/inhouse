@@ -1,9 +1,13 @@
 require 'test_helper'
 
 class LeaguesControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     @league = leagues(:one)
   end
+
+
+#auto generated tests
 
   test "should get index" do
     get leagues_url
@@ -45,4 +49,21 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to leagues_url
   end
+
+# written tests:
+
+  test 'should redirect create when logged in' do
+    assert_no_difference 'League.count' do
+      post leagues_path, params: { league: { name: "TestName"} }
+    end
+    assert_redirected_to login_url
+  end
+
+  test 'should redirect destroy when not logged in' do
+    assert_no_difference 'League.count' do
+      delete leagues_path(@league)
+    end
+    assert_redirected_to login_url
+  end
+
 end
