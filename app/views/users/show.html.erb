@@ -9,9 +9,11 @@
 </h3>
 
 <% if @user.leagues.any? %>
-  <ul>
-    <%= render @leagues %>
-  </ul>
+  <% @user.leagues.each do |l| %>
+    <ul>
+      <%= l.name %>
+    </ul>
+  <% end %>
 <% else %>
   <p>
     You don't seem to be a member of any leagues.

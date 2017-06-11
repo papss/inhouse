@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_many :league_users
-  has_many :leagues, :through => :league_users
+  has_many :leagues, :through => :league_users, dependent: :destroy
 
   attr_accessor :remember_token
 
