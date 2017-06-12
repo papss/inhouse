@@ -27,6 +27,9 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
 
+    # ADD code to set current user as league_user:
+    # @league.users << current_user, admin: true? 
+
     respond_to do |format|
       if @league.save
         format.html { redirect_to @league, notice: 'League was successfully created.' }

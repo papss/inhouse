@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609185014) do
+ActiveRecord::Schema.define(version: 20170612000428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170609185014) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "league_admin", default: false
     t.index ["league_id"], name: "index_league_users_on_league_id"
     t.index ["user_id"], name: "index_league_users_on_user_id"
   end
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170609185014) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remeber_digest"
-    t.boolean "site_admin"
+    t.boolean "site_admin", default: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
