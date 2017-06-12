@@ -12,5 +12,12 @@
   </ul>
 <% end %>
 
+<h3> Admins </h3>
+<% @league.league_users.where("league_admin = true").each do |u| %>
+  <ul>
+    <%= u.user_id %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_league_path(@league) %> |
 <%= link_to 'Back', leagues_path %>
