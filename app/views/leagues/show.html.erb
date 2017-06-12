@@ -5,5 +5,12 @@
   <%= @league.name %>
 </p>
 
+<h3> Members </h3>
+<% @league.users.each do |u| %>
+  <ul>
+    <%= u.user_name %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_league_path(@league) %> |
 <%= link_to 'Back', leagues_path %>
