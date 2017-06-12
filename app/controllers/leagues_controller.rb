@@ -27,6 +27,8 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     @league.users << current_user
+    owner = @league.league_users.last
+    owner.toggle!(:league_admin)
     respond_to do |format|
       if @league.save
         format.html { redirect_to @league, notice: 'League was successfully created.' }
