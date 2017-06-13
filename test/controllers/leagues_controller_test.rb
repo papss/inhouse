@@ -4,6 +4,7 @@ class LeaguesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @league = leagues(:one)
+    @user = users(:one)
   end
 
 
