@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :league_users
   has_many :leagues, :through => :league_users, dependent: :destroy
 
+  has_many :invitations,   :class_name => "Invite", :foreign_key => "recipient_id"
+  has_many :sent_invites,  :class_name => "Invite", :foreign_key => "sender_id"
+
   attr_accessor :remember_token
 
   before_save { self.email_address = email_address.downcase }
