@@ -2,19 +2,23 @@ Rails.application.routes.draw do
 
   resources :invites
   resources :leagues
-  root 'landing#index'
+  resources :users
+  resources :league_users 
 
-  get 'landing/index'
-  get 'landing/about'
-
+  # session routes:
   get    '/login',              to: 'sessions#new'
   post   '/login',              to: 'sessions#create'
   delete '/logout',             to: 'sessions#destroy'
 
+  # sign-up routes:
   get    '/signup',             to: 'users#new'
   get    '/signup',             to: 'users#create'
 
-  resources :users
+  # non-controller pages:
+  get 'landing/index'
+  get 'landing/about'
+
+  root 'landing#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
