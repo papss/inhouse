@@ -6,17 +6,29 @@
 </p>
 
 <h3> Members </h3>
-<% @league.users.each do |u| %>
+
+<h4> Admins </h4>
+<% @league.users.where("league_users.league_admin = true").each do |u| %>
   <ul>
     <%= u.user_name %>
   </ul>
 <% end %>
 
-<h3> Admins </h3>
-<% @league.users.where("league_users.league_admin = true").each do |u| %>
+<h4> Users </h4>
+<% @league.users.where("league_users.league_admin = false").each do |u| %>
   <ul>
     <%= u.user_name %>
   </ul>
+<% end %>
+
+<% if logged_in? %>
+  <% if current_user.leagues.include?(@league) %>
+    <h4> You're already a member of this league </h4>
+  <% else %>
+    <h4> This is where the join league button will go. </h4>
+  <% end %>
+<% else %>
+  <h4> Create an account to be able to join leagues! </h4>
 <% end %>
 
 <%= link_to 'Edit', edit_league_path(@league) %> |

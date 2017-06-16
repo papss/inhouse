@@ -1,5 +1,8 @@
 class LeagueUsersController < ApplicationController
 
+  # Require log in check before running method:
+  before_action :logged_in_user
+
   def index
     @league_user = LeagueUser.all
   end
@@ -14,6 +17,11 @@ class LeagueUsersController < ApplicationController
 
   # User joins a league:
   def create
+    @league = League.find(params[:id])
+    @league.users << current_user
+  end
+
+  def edit
   end
 
   def update
@@ -28,5 +36,8 @@ class LeagueUsersController < ApplicationController
   def league_user_params
     params.require(:league_user).permit(:league_id, :user_id)
   end
+
+  # callback functions:
+
 
 end
