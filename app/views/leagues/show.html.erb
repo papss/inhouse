@@ -25,7 +25,9 @@
   <% if current_user.leagues.include?(@league) %>
     <h4> You're already a member of this league </h4>
   <% else %>
-    <h4> This is where the join league button will go. </h4>
+    <h4>
+      <%= link_to "Join this League", new_league_user_path(@league) %>
+     </h4>
   <% end %>
 <% else %>
   <h4> Create an account to be able to join leagues! </h4>

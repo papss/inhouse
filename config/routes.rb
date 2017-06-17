@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :invites
-  resources :leagues
   resources :users
-  resources :league_users 
+  resources :leagues
+  resources :league_users
 
   # session routes:
   get    '/login',              to: 'sessions#new'

@@ -18,7 +18,20 @@ class LeagueUsersController < ApplicationController
   # User joins a league:
   def create
     @league = League.find(params[:id])
-    @league.users << current_user
+    if @league.users.ids.include?(current_user.id)
+      redirect_to(@league, :notice => "You're already a member of this league!")
+    else
+      @league_user = @league.users << current_user
+    end
+    respond_to do |format|
+      if @league_user.save
+        format.html { redirect_to(@league, :notice => "Successfully joined #{@league.name}") }
+        format.json { render :show, status: :ok, location: @league }
+      else
+        format.html { redirect_to(@league, :notice => "Something went wrong!") }
+        format.json { render json: @league_user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
