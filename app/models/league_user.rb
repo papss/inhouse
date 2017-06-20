@@ -5,4 +5,6 @@ class LeagueUser < ApplicationRecord
 
   attr_accessor :league_admin
 
+  validates_uniqueness_of :user_id, :scope => :league_id
+
 end

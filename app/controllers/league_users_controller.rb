@@ -23,7 +23,7 @@ class LeagueUsersController < ApplicationController
         format.html { redirect_to league_url(@league_user.league, :notice => "Successfully joined #{@league_user.league.name}") }
         format.json { render :show, status: :ok, location: @league }
       else
-        format.html { redirect_to(@league, :notice => "Something went wrong!") }
+        format.html { redirect_to(@league_user.league, :notice => "Something went wrong!") }
         format.json { render json: @league_user.errors, status: :unprocessable_entity }
       end
     end
