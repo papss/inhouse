@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :invites
-  resources :users
+  # concerns:
+  concern :members do
+    resources :league_users
+  end
 
-  resources :leagues 
-  resources :league_users
+  # resource routes:
+  resources :users,             concerns: :members
+  resources :leagues,           concerns: :members
 
   # session routes:
   get    '/login',              to: 'sessions#new'

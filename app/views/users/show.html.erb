@@ -4,20 +4,25 @@
   <%= @user.user_name %>
 </h1>
 
-<h3>
+<h2>
   My Leagues
-</h3>
+</h2>
 
 <% if @user.leagues.any? %>
-  <% @user.leagues.each do |l| %>
-    <ul>
-      <%= l.name %>
-    </ul>
+  <% @user.leagues.each do |league| %>
+
+  <h4>
+    <%= league.name %>
+  </h4>
+  <%= link_to "Leave this league", league_url(league) %>
+
   <% end %>
 <% else %>
+
   <p>
     You don't seem to be a member of any leagues.
   </p>
+
 <% end %>
 
 <h4>

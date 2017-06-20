@@ -17,7 +17,7 @@ class LeagueUsersController < ApplicationController
 
   # User joins a league:
   def create
-    @league_user = LeagueUser.new(league_user_params)
+    @league_user = LeagueUser.new
     respond_to do |format|
       if @league_user.save
         format.html { redirect_to league_url(@league_user.league, :notice => "Successfully joined #{@league_user.league.name}") }
@@ -37,6 +37,14 @@ class LeagueUsersController < ApplicationController
 
   # User leaves a league:
   def destroy
+    @league_user = current_user.league_users.find(params[:league_id])
+    @league_user.destroy
+    if @league_user.destroy
+      respond_to do |format|
+        format.html { redirect_to league_url(@league), :notice => "You have left #{league.name}" }
+        format.json { head :no_content }
+      end
+    end
   end
 
   private
