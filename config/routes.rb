@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :invites
   resources :users
-  resources :leagues
+
+  resources :leagues 
   resources :league_users
 
   # session routes:

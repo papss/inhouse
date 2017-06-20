@@ -25,9 +25,13 @@
   <% if current_user.leagues.include?(@league) %>
     <h4> You're already a member of this league </h4>
   <% else %>
-    <h4>
-      <%= link_to "Join this League", new_league_user_path(@league) %>
-     </h4>
+
+    <%= form_for @league.league_users.new do |form| %>
+      <%= form.hidden_field :league_id, :value => @league.id %>
+      <%= form.hidden_field :user_id, :value => current_user.id %>
+      <%= form.submit "Join this League" %>
+    <% end %>
+
   <% end %>
 <% else %>
   <h4> Create an account to be able to join leagues! </h4>

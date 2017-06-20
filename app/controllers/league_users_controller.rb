@@ -17,15 +17,10 @@ class LeagueUsersController < ApplicationController
 
   # User joins a league:
   def create
-    @league = League.find(params[:id])
-    if @league.users.ids.include?(current_user.id)
-      redirect_to(@league, :notice => "You're already a member of this league!")
-    else
-      @league_user = @league.users << current_user
-    end
+    @league_user = LeagueUser.new(league_user_params)
     respond_to do |format|
       if @league_user.save
-        format.html { redirect_to(@league, :notice => "Successfully joined #{@league.name}") }
+        format.html { redirect_to league_url(@league_user.league, :notice => "Successfully joined #{@league_user.league.name}") }
         format.json { render :show, status: :ok, location: @league }
       else
         format.html { redirect_to(@league, :notice => "Something went wrong!") }
@@ -47,7 +42,7 @@ class LeagueUsersController < ApplicationController
   private
 
   def league_user_params
-    params.require(:league_user).permit(:league_id, :user_id)
+    params.require(:league_user).permit(:league_id, :user_id, :league_admin)
   end
 
   # callback functions:
