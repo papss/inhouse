@@ -17,7 +17,9 @@ class LeagueUsersController < ApplicationController
 
   # User joins a league:
   def create
-    @league_user = LeagueUser.new
+    @league_user = LeagueUser.new(params[:league_user_params])
+    @league_user.league = League.find(params[:league_id])
+    @league_user.user = current_user
     respond_to do |format|
       if @league_user.save
         format.html { redirect_to league_url(@league_user.league, :notice => "Successfully joined #{@league_user.league.name}") }

@@ -29,8 +29,8 @@
   <% else %>
 
   <%= form_with(model: [ @league, LeagueUser.new ]) do |form| %>
-    <%= form.hidden_field :league_id, :value => @league.id %>
-    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :league_id,           :value => @league.id %>
+    <%= form.hidden_field :user_id,             :value => current_user.id %> 
     <%= form.submit "Join this league" %>
   <% end %>
 
