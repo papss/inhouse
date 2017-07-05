@@ -26,11 +26,13 @@
 
     <h4> You're already a member of this league </h4>
 
+    <%= link_to "Leave this league", league_league_user_path(@league, current_user), :method => :delete %> 
+
   <% else %>
 
   <%= form_with(model: [ @league, LeagueUser.new ]) do |form| %>
     <%= form.hidden_field :league_id,           :value => @league.id %>
-    <%= form.hidden_field :user_id,             :value => current_user.id %> 
+    <%= form.hidden_field :user_id,             :value => current_user.id %>
     <%= form.submit "Join this league" %>
   <% end %>
 

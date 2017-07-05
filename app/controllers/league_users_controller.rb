@@ -18,6 +18,7 @@ class LeagueUsersController < ApplicationController
   # User joins a league:
   def create
     @league_user = LeagueUser.new(params[:league_user_params])
+    # params[:league_id] because :league_id is the name of the value being passed into the form
     @league_user.league = League.find(params[:league_id])
     @league_user.user = current_user
     respond_to do |format|
@@ -39,7 +40,8 @@ class LeagueUsersController < ApplicationController
 
   # User leaves a league:
   def destroy
-    @league_user = current_user.league_users.find(params[:league_id])
+    @league_user = LeagueUser.where(params[:league_id], params[:user_id])
+    @league = @league_user.league
     @league_user.destroy
     if @league_user.destroy
       respond_to do |format|
