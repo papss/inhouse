@@ -1,3 +1,24 @@
 // Place all the styles related to the Landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.landing {
+  position: relative;
+  top: -3px;
+  width: 100%;
+  height: 400px;
+  background-color: #D0D5E2;
+  text-align: center;
+}
+
+.splash {
+  display: inline-block;
+  margin: auto;
+  padding: 30px;
+  padding-top: 225px;
+}
+
+.splash > p {
+  font-family: Arial;
+  font-size: 18px; 
+}
