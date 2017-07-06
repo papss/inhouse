@@ -1,32 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @league.name %>
-</p>
+<div class="league-container">
 
-<h3> Members </h3>
+  <div class="league-header">
+    <h1> <%= @league.name %></h1>
+  </div>
 
-<h4> Admins </h4>
-<% @league.users.where("league_users.league_admin = true").each do |u| %>
-  <ul>
-    <%= u.user_name %>
-  </ul>
-<% end %>
+  <div class="league-table">
+    <h1> League Table </h1>
+  </div>
 
-<h4> Users </h4>
-<% @league.users.where("league_users.league_admin = false").each do |u| %>
-  <ul>
-    <%= u.user_name %>
-  </ul>
-<% end %>
+  <div class="league-users">
+    <h3> Members </h3>
+
+    <h4> Admins </h4>
+    <% @league.users.where("league_users.league_admin = true").each do |u| %>
+      <ul>
+        <%= u.user_name %>
+      </ul>
+    <% end %>
+
+    <h4> Users </h4>
+    <% @league.users.where("league_users.league_admin = false").each do |u| %>
+      <ul>
+        <%= u.user_name %>
+      </ul>
+    <% end %>
+  </div>
+
+</div>
 
 <% if logged_in? %>
   <% if current_user.leagues.include?(@league) %>
 
     <h4> You're already a member of this league </h4>
 
-    <%= link_to "Leave this league", league_league_user_path(@league, current_user), :method => :delete %> 
+    <%= link_to "Leave this league", league_league_user_path(@league, current_user), :method => :delete %>
 
   <% else %>
 

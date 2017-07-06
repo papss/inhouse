@@ -7,14 +7,22 @@
   background-color: $dark-blue;
 }
 
+// header individual elements:
+
 .site-header > h1 {
   display: inline-block;
   margin: 5px;
   margin-left: 30px;
 
   font-family: Arial;
-  color: #D0D5E2; 
+  color: $plat;
 }
+
+.site-header > a, a:visited {
+  color: $plat;
+}
+
+// header divs:
 
 .header-login {
   display: inline-block;
@@ -26,4 +34,15 @@
 .header-form {
   padding: 14px;
   margin-right: 30px;
+}
+
+.header-links {
+  padding: 14px;
+  margin-right: 16px;
+  font-family: Arial;
+  font-size: 16px;
+
+  a {
+    margin: 0px 10px;
+  }
 }

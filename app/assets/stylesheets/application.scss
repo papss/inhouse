@@ -4,13 +4,14 @@
 @import "site-header";
 @import "landing";
 @import "users";
+@import "leagues";
 
 * {
   box-sizing: border-box;
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 #yeild-container {
