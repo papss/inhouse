@@ -5,6 +5,7 @@
 @import "landing";
 @import "users";
 @import "leagues";
+@import "league-users";
 
 * {
   box-sizing: border-box;
@@ -19,4 +20,5 @@ a {
   top: 50px;
   left: 0px;
   width: 100%;
+  background-color: $grey;
 }

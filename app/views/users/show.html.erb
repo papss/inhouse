@@ -1,33 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
-  <%= @user.user_name %>
-</h1>
+<div class="user-container">
 
-<h2>
-  My Leagues
-</h2>
+  <h1>
+    <%= @user.user_name %>
+  </h1>
 
-<% if @user.leagues.any? %>
-  <% @user.leagues.each do |league| %>
+  <div class="user-leagues">
 
-  <h4>
-    <%= league.name %>
-  </h4>
-  <%= link_to "Leave this league", league_url(league) %>
+    <h2>
+      My Leagues
+    </h2>
 
-  <% end %>
-<% else %>
+    <% if @user.leagues.any? %>
+      <% @user.leagues.each do |league| %>
 
-  <p>
-    You don't seem to be a member of any leagues.
-  </p>
+      <h4>
+        <%= league.name %>
+      </h4>
+      <%= link_to "Leave this league", league_url(league) %>
 
-<% end %>
+      <% end %>
+    <% else %>
 
-<h4>
-  <%= link_to 'Start a new League', new_league_path %>
-</h4>
+      <p>
+        You don't seem to be a member of any leagues.
+      </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+    <% end %>
+
+    <h4>
+      <%= link_to 'Start a new League', new_league_path %>
+    </h4>
+
+  </div> 
+
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+
+</div>

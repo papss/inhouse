@@ -6,29 +6,22 @@
     <h1> <%= @league.name %></h1>
   </div>
 
-  <div class="league-table">
-    <h1> League Table </h1>
-  </div>
+  <div class="league-content">
 
-  <div class="league-users">
-    <h3> Members </h3>
+    <div class="league-table">
+      <h1 class="content-header"> League Table </h1>
+    </div>
 
-    <h4> Admins </h4>
-    <% @league.users.where("league_users.league_admin = true").each do |u| %>
-      <ul>
-        <%= u.user_name %>
-      </ul>
-    <% end %>
+    <div class="league-users">
+      <h1 class="content-header"> Members </h1>
+      <%= render 'league_users' %>
+    </div>
 
-    <h4> Users </h4>
-    <% @league.users.where("league_users.league_admin = false").each do |u| %>
-      <ul>
-        <%= u.user_name %>
-      </ul>
-    <% end %>
   </div>
 
 </div>
+
+
 
 <% if logged_in? %>
   <% if current_user.leagues.include?(@league) %>

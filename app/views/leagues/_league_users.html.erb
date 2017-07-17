@@ -1,0 +1,18 @@
+<% @league.users.where("league_users.league_admin = true").each do |u| %>
+  <div class="league-user admin">
+    <h3>
+      <%= u.user_name %>
+    </h3>
+    <h5>
+      League Admin
+    </h5>
+  </div>
+<% end %>
+
+<% @league.users.where("league_users.league_admin = false").each do |u| %>
+  <div class="league-user member">
+    <h3>
+      <%= u.user_name %>
+    </h3>
+  </div>
+<% end %>
