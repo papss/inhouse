@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'seasons/new'
+
   # concerns:
   concern :members do
     resources :league_users
