@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 20170719222637) do
 
   create_table "seasons", force: :cascade do |t|
     t.string "name"
+    t.bigint "league_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_seasons_on_league_id"
   end
 
   create_table "users", force: :cascade do |t|
