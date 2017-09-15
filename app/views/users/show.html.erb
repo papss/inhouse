@@ -12,28 +12,23 @@
       My Leagues
     </h2>
 
-    <% if @user.leagues.any? %>
-      <% @user.leagues.each do |league| %>
-
-      <h4>
-        <%= league.name %>
-      </h4>
-      <%= link_to "Leave this league", league_url(league) %>
-
+    <% if @user.league_users.any? %>
+      <% @user.league_users.each do |league_user| %>
+        <h4>
+          <%= league_user.league.name %>
+        </h4>
       <% end %>
     <% else %>
-
       <p>
         You don't seem to be a member of any leagues.
       </p>
-
     <% end %>
 
     <h4>
       <%= link_to 'Start a new League', new_league_path %>
     </h4>
 
-  </div> 
+  </div>
 
 
   <%= link_to 'Edit', edit_user_path(@user) %> |
